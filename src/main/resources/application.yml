@@ -6,6 +6,7 @@ spring:
     name: sharding_jdbc
 
 #sharding-jdbc的配置
+#一主多从配置
 sharding.jdbc:
   datasource:
     names: ds_master,ds_slave_0,ds_slave_1
@@ -35,6 +36,58 @@ sharding.jdbc:
       load-balance-algorithm-type: round_robin
   props:
     sql.show: true
+
+#多主多从配置
+#sharding.jdbc:
+#  datasource:
+#    names: ds_master_0,ds_slave_0,ds_master_1,ds_slave_1
+#    ds_master_0:
+#      type: com.alibaba.druid.pool.DruidDataSource
+#      driver-class-name: com.mysql.jdbc.Driver
+#      url: jdbc:mysql://localhost:3306/db1
+#      username: root
+#      password: root
+#    ds_slave_0:
+#      type: com.alibaba.druid.pool.DruidDataSource
+#      driver-class-name: com.mysql.jdbc.Driver
+#      url: jdbc:mysql://localhost:3306/db0
+#      username: root
+#      password: root
+#    ds_master_1:
+#      type: com.alibaba.druid.pool.DruidDataSource
+#      driver-class-name: com.mysql.jdbc.Driver
+#      url: jdbc:mysql://localhost:3306/db3
+#      username: root
+#      password: root
+#    ds_slave_1:
+#      type: com.alibaba.druid.pool.DruidDataSource
+#      driver-class-name: com.mysql.jdbc.Driver
+#      url: jdbc:mysql://localhost:3306/db2
+#      username: root
+#      password: root
+#  config:
+#    sharding:
+#      tables:
+#        # 数据库表名
+#        user:
+#          actual-data-nodes: ds$->{0..1}.user
+#          table-strategy:
+#            inline:
+#              sharding-column: id
+#              algorithm-expression: user
+#          #自增列名称，缺省表示不使用自增主键生成器
+#          key-generator-column-name: id
+#          #默认自增列值生成器类名称，缺省使用DefaultKeyGenerator
+#          key-generator-class-name: io.shardingsphere.core.keygen.DefaultKeyGenerator
+#      master-slave-rules:
+#        ds0:
+#          master-data-source-name: ds_master_0
+#          slave-data-source-names: ds_slave_0
+#        ds1:
+#          master-data-source-name: ds_master_1
+#          slave-data-source-names: ds_slave_1
+#  props:
+#    sql.show: true
 #mybatis的配置
 mybatis:
   config-location: classpath:mybatis/config.xml

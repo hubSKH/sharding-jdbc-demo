@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Integer saveUser(User user) {
+    public Long saveUser(User user) {
         vtsUserMapper.insert(user);
         return user.getId ();
     }

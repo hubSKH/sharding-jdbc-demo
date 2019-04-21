@@ -4,6 +4,7 @@ import com.alibaba.druid.pool.DruidDataSource;
 import com.google.common.collect.Maps;
 import groovy.util.logging.Slf4j;
 import io.shardingsphere.core.api.MasterSlaveDataSourceFactory;
+import io.shardingsphere.core.keygen.DefaultKeyGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

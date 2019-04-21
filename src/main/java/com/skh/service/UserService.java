@@ -6,5 +6,5 @@ public interface UserService {
 
     User getUser(int id);
 
-    Integer saveUser(User user);
+    Long saveUser(User user);
 }

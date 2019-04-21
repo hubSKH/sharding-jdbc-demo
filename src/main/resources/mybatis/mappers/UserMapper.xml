@@ -19,9 +19,9 @@
         delete from user
         where id = #{id,jdbcType=INTEGER}
     </delete>
-    <insert id="insert" parameterType="com.skh.po.User">
-        insert into user (id, name, age)
-        values (#{id,jdbcType=INTEGER}, #{name,jdbcType=INTEGER}, #{age,jdbcType=INTEGER}
+    <insert id="insert" parameterType="com.skh.po.User" useGeneratedKeys="true" keyProperty="id">
+        insert into user ( name, age)
+        values ( #{name,jdbcType=INTEGER}, #{age,jdbcType=INTEGER}
         )
     </insert>
     <insert id="insertSelective" parameterType="com.skh.po.User">
