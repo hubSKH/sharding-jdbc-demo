@@ -3,11 +3,14 @@ package com.skh.service.impl;
 import com.skh.dao.UserMapper;
 import com.skh.po.User;
 import com.skh.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
+    private Logger log = LoggerFactory.getLogger (UserServiceImpl.class);
     /**
      * 注入数据接口
      */

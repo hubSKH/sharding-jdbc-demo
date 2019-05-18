@@ -22,7 +22,7 @@ import java.util.Properties;
 @Slf4j
 @Configuration
 @EnableConfigurationProperties(ShardingMasterSlaveConfig.class)
-@ConditionalOnProperty({"sharding.jdbc.data-sources.ds_master.url", "sharding.jdbc.master-slave-rule.master-data-source-name"})
+@ConditionalOnProperty({"sharding.jdbc.datasource.ds_master.url", "sharding.jdbc.config.masterslave.master-data-source-name"})
 public class ShardingDataSourceConfig {
     private final static Logger log = LoggerFactory.getLogger (ShardingDataSourceConfig.class);
     @Autowired(required = false)

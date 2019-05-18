@@ -20,6 +20,9 @@
         where id = #{id,jdbcType=INTEGER}
     </delete>
     <insert id="insert" parameterType="com.skh.po.User" useGeneratedKeys="true" keyProperty="id">
+        <!--<selectKey keyProperty="id" resultType="long">-->
+            <!--select LAST_INSERT_ID()-->
+        <!--</selectKey>-->
         insert into user ( name, age)
         values ( #{name,jdbcType=INTEGER}, #{age,jdbcType=INTEGER}
         )
