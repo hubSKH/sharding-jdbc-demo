@@ -20,15 +20,19 @@ public class UserTest {
 
     @Test
     public void selectTest(){
-        User user=userService.getUser (1);
+        User user=userService.getUser (1L);
+        System.out.println (user);
     }
 
     @Test
     public void insetTest(){
 
         User user= new User ();
-        user.setId (1);
+        user.setId (10086L);
+        user.setName ("名字");
+        user.setAge (18);
         userService.saveUser (user);
+        System.out.println (user);
     }
 
 }

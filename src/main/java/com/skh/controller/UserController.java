@@ -14,7 +14,7 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("select")
-    public User getuser(@RequestParam("id")int id){
+    public User getuser(@RequestParam("id")Long id){
 
         return userService.getUser (id);
 

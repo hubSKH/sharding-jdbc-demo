@@ -2,29 +2,35 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.skh.dao.UserMapper">
     <resultMap id="BaseResultMap" type="com.skh.po.User">
-        <id column="id" jdbcType="INTEGER" property="id" />
-        <result column="name" jdbcType="INTEGER" property="name" />
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
         <result column="age" jdbcType="INTEGER" property="age" />
     </resultMap>
     <sql id="Base_Column_List">
         id, name, age
     </sql>
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
         from user
-        where id = #{id,jdbcType=INTEGER}
+        where id = #{id,jdbcType=BIGINT}
     </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <select id="selectList" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from user
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from user
-        where id = #{id,jdbcType=INTEGER}
+        where id = #{id,jdbcType=BIGINT}
     </delete>
     <insert id="insert" parameterType="com.skh.po.User" useGeneratedKeys="true" keyProperty="id">
         <!--<selectKey keyProperty="id" resultType="long">-->
             <!--select LAST_INSERT_ID()-->
         <!--</selectKey>-->
         insert into user ( name, age)
-        values ( #{name,jdbcType=INTEGER}, #{age,jdbcType=INTEGER}
+        values ( #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}
         )
     </insert>
     <insert id="insertSelective" parameterType="com.skh.po.User">
@@ -42,10 +48,10 @@
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">
-                #{id,jdbcType=INTEGER},
+                #{id,jdbcType=BIGINT},
             </if>
             <if test="name != null">
-                #{name,jdbcType=INTEGER},
+                #{name,jdbcType=VARCHAR},
             </if>
             <if test="age != null">
                 #{age,jdbcType=INTEGER},

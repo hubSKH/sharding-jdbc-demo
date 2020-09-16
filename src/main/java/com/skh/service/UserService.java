@@ -2,9 +2,13 @@ package com.skh.service;
 
 import com.skh.po.User;
 
+import java.util.List;
+
 public interface UserService {
 
-    User getUser(int id);
+    User getUser(Long id);
+
+    List<User> getUserList(Long id);
 
     Long saveUser(User user);
 }

@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
     private Logger log = LoggerFactory.getLogger (UserServiceImpl.class);
@@ -19,10 +21,14 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public User getUser(int id) {
+    public User getUser(Long id) {
         User user = vtsUserMapper.selectByPrimaryKey(id);
-        System.out.println(user);
         return user;
+    }
+
+    @Override
+    public List<User> getUserList(Long id) {
+        return vtsUserMapper.selectList (id);
     }
 
     @Override
