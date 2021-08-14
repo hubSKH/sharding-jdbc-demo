@@ -9,30 +9,30 @@ spring:
 #一主多从配置
 sharding.jdbc:
   datasource:
-    names: ds_master,ds_slave_0,ds_slave_1
-    ds_master:
+    names: ds-master,ds-slave-0,ds-slave-1
+    ds-master:
       type: com.alibaba.druid.pool.DruidDataSource
       driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/db1
+      url: jdbc:mysql://localhost:3306/db1?serverTimezone=UTC
       username: root
       password: root
-    ds_slave_0:
+    ds-slave-0:
       type: com.alibaba.druid.pool.DruidDataSource
       driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/db0
+      url: jdbc:mysql://localhost:3306/db0?serverTimezone=UTC
       username: root
       password: root
-    ds_slave_1:
+    ds-slave-1:
       type: com.alibaba.druid.pool.DruidDataSource
       driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/db2
+      url: jdbc:mysql://localhost:3306/db2?serverTimezone=UTC
       username: root
       password: root
   config:
     masterslave:
       name: ds_ms
-      master-data-source-name: ds_master
-      slave-data-source-names: ds_slave_0,ds_slave_1
+      master-data-source-name: ds-master
+      slave-data-source-names: ds-slave-0,ds-slave-1
       load-balance-algorithm-type: round_robin
   props:
     sql.show: true
@@ -40,29 +40,29 @@ sharding.jdbc:
 #多主多从配置
 #sharding.jdbc:
 #  datasource:
-#    names: ds_master_0,ds_slave_0,ds_master_1,ds_slave_1
-#    ds_master_0:
+#    names: ds-master-0,ds-slave-0,ds-master-1,ds-slave-1
+#    ds-master-0:
 #      type: com.alibaba.druid.pool.DruidDataSource
 #      driver-class-name: com.mysql.jdbc.Driver
-#      url: jdbc:mysql://localhost:3306/db1
+#      url: jdbc:mysql://localhost:3306/db1?serverTimezone=UTC
 #      username: root
 #      password: root
-#    ds_slave_0:
+#    ds-slave-0:
 #      type: com.alibaba.druid.pool.DruidDataSource
 #      driver-class-name: com.mysql.jdbc.Driver
-#      url: jdbc:mysql://localhost:3306/db0
+#      url: jdbc:mysql://localhost:3306/db0?serverTimezone=UTC
 #      username: root
 #      password: root
-#    ds_master_1:
+#    ds-master-1:
 #      type: com.alibaba.druid.pool.DruidDataSource
 #      driver-class-name: com.mysql.jdbc.Driver
-#      url: jdbc:mysql://localhost:3306/db3
+#      url: jdbc:mysql://localhost:3306/db3?serverTimezone=UTC
 #      username: root
 #      password: root
-#    ds_slave_1:
+#    ds-slave-1:
 #      type: com.alibaba.druid.pool.DruidDataSource
 #      driver-class-name: com.mysql.jdbc.Driver
-#      url: jdbc:mysql://localhost:3306/db2
+#      url: jdbc:mysql://localhost:3306/db2?serverTimezone=UTC
 #      username: root
 #      password: root
 #  config:
@@ -81,11 +81,11 @@ sharding.jdbc:
 #          key-generator-class-name: io.shardingsphere.core.keygen.DefaultKeyGenerator
 #      master-slave-rules:
 #        ds0:
-#          master-data-source-name: ds_master_0
-#          slave-data-source-names: ds_slave_0
+#          master-data-source-name: ds-master-0
+#          slave-data-source-names: ds-slave-0
 #        ds1:
-#          master-data-source-name: ds_master_1
-#          slave-data-source-names: ds_slave_1
+#          master-data-source-name: ds-master-1
+#          slave-data-source-names: ds-slave-1
 #  props:
 #    sql.show: true
 #mybatis的配置
